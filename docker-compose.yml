@@ -1,0 +1,45 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: simplewishlist_postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+    env_file:
+      - backend/.env
+
+  redis:
+    image: redis:7.4.0-alpine
+    container_name: simplewishlist_redis
+
+  backend:
+    build:
+        context: backend
+        dockerfile: ./Dockerfile
+    env_file:
+      - backend/.env
+    container_name: simplewishlist_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./backend:/app  # mount the current directory into the container
+
+  frontend:
+    build:
+        context: frontend
+        dockerfile: ./Dockerfile
+    container_name: simplewishlist_frontend
+    env_file:
+      - frontend/.env
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+
+# Define a named volume for PostgreSQL data storage
+volumes:
+  pgdata:

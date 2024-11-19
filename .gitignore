@@ -1,0 +1,4 @@
+.idea
+backend/
+frontend/
+docker-compose.production.yml
