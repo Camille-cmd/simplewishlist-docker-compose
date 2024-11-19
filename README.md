@@ -23,8 +23,10 @@ Frontend:
 1. Clone this repository, this is now the root directory.
 
 2. Clone both the frontend and backend repositories to the root directory.
-Frontend: https://github.com/Camille-cmd/simplewishlist_frontend
-Backend: https://github.com/Camille-cmd/simplewishlist_backend
+
+   >Frontend: https://github.com/Camille-cmd/simplewishlist_frontend
+
+   >Backend: https://github.com/Camille-cmd/simplewishlist_backend
 
 3. Create the environment files for the frontend and backend by copying the corresponding `.env.example` files and renaming them to `.env`.
 
@@ -80,47 +82,6 @@ Before you commit, make sure to run the tests and check the coverage:
 # Make sure coverage is higher than 80% and tests pass
 docker exec -it simplewishlist_backend coverage run manage.py test
 ```
-
-### Manual Installation (Not recommended - Use docker-compose instead)
-
-1. Clone the repository
-
-2. Navigate to the project directory:
-    ```bash
-    cd simplewishlist_backend
-    ```
-
-3. Create a virtual environment using uv:
-    ```bash
-    uv venv
-    ```
-
-4. Activate the virtual environment:
-    - On Windows:
-        ```bash
-        .\venv\Scripts\activate
-        ```
-    - On Unix or MacOS:
-        ```bash
-        source .venv/bin/activate
-        ```
-
-5. Install the required dependencies:
-    ```bash
-    uv pip install -r requirements-dev.txt
-    ```
-
-## Running the Application
-
-1. Apply the migrations:
-    ```bash
-    python manage.py migrate
-    ```
-
-2. Run the server:
-    ```bash
-    python manage.py runserver
-    ```
 
 ## License
 
